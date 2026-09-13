@@ -88,7 +88,17 @@ footer{border-top:1px solid var(--line);padding:34px 0;color:var(--mut);font-siz
 .doc .meta{display:flex;gap:9px;align-items:center;margin-top:5px;font-size:11.5px;color:var(--mut);flex-wrap:wrap}
 .doc .tag{background:#f1ece1;border-radius:999px;padding:2px 9px}.doc .dl{flex:0 0 auto;font-size:12.5px;font-weight:700;color:var(--accent)}
 .empty{color:var(--mut);padding:40px 0;text-align:center}
-@media(max-width:640px){.doc .dl{display:none}.nav a.l{display:none}select.lang{max-width:96px}}
+.hlp{font-size:13px;font-weight:600;padding:8px 15px;border-radius:999px;border:1.5px solid var(--line);background:#fff;cursor:pointer;color:var(--ink);font-family:inherit;white-space:nowrap}
+.hlp:hover{border-color:var(--accent);color:var(--accent)}
+.msgwrap{position:fixed;inset:0;background:rgba(20,16,12,.55);display:none;align-items:center;justify-content:center;z-index:100;padding:20px}
+.msgbox{background:#fffdfa;border-radius:18px;max-width:440px;width:100%;padding:26px;position:relative;box-shadow:0 30px 80px -40px rgba(0,0,0,.6)}
+.msgbox h3{font-size:19px;font-weight:800;margin-bottom:14px}
+.msgbox input,.msgbox textarea{width:100%;font:14px/1.5 inherit;padding:11px 14px;border:1.5px solid var(--line);border-radius:11px;margin-bottom:10px;outline:none;background:#fff;font-family:inherit}
+.msgbox textarea{min-height:110px;resize:vertical}
+.msgbox .msend{width:100%;background:var(--accent);color:#fff;font-weight:700;font-size:14.5px;padding:12px;border:0;border-radius:999px;cursor:pointer;font-family:inherit}
+.msgbox .mclose{position:absolute;top:12px;inset-inline-end:14px;background:none;border:0;font-size:22px;line-height:1;color:var(--mut);cursor:pointer}
+.msgdone{display:none;color:#1a7f37;font-weight:600;padding:10px 0}
+@media(max-width:640px){.doc .dl{display:none}.nav a.l{display:none}select.lang{max-width:96px}.hlp{display:none}}
 </style>
 </head>
 <body>
@@ -100,6 +110,7 @@ footer{border-top:1px solid var(--line);padding:34px 0;color:var(--mut);font-siz
   <select class="lang" onchange="if(this.value)location.href=this.value" aria-label="Language">
     <option value="en">English</option><option value="zh">中文</option><option value="ar">العربية</option><option value="de">Deutsch</option><option value="es">Español</option><option value="fa">فارسی</option><option value="fr">Français</option><option value="he" selected>עברית</option><option value="hi">हिन्दी</option><option value="id">Indonesia</option><option value="it">Italiano</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="nl">Nederlands</option><option value="pl">Polski</option><option value="pt">Português</option><option value="ru">Русский</option><option value="sv">Svenska</option><option value="th">ไทย</option><option value="tr">Türkçe</option><option value="ur">اردو</option><option value="vi">Tiếng Việt</option>
   </select>
+  <button class="hlp" onclick="openMsg()">הודעה</button>
   <a class="b" href="documents.html">פתח ספרייה</a>
 </div></header>
 
@@ -148,8 +159,29 @@ footer{border-top:1px solid var(--line);padding:34px 0;color:var(--mut);font-siz
   </div>
 </div></section>
 <section class="note"><div class="wrap">
-  <b>אודות</b><br>כל המסמכים פורסמו על ידי היצרנים המקוריים; אתר זה רק מארגן ומשקף אותם כדי להקל על חיפוש והורדה. הזכויות שייכות לחברות תכנון השבבים — לעיון בלבד. <a href="mailto:zhansuit@qq.com" style="color:var(--accent)">zhansuit@qq.com</a>
+  <b>אודות</b><br>כל המסמכים פורסמו על ידי היצרנים המקוריים; אתר זה רק מארגן ומשקף אותם כדי להקל על חיפוש והורדה. הזכויות שייכות לחברות תכנון השבבים — לעיון בלבד. <a href="#" onclick="openMsg();return false" style="color:var(--accent);font-weight:700">הודעה →</a>
 </div></section>
 </main>
+
+<div class="msgwrap" id="msgModal">
+  <div class="msgbox">
+    <button class="mclose" onclick="closeMsg()">&#10005;</button>
+    <h3>שלח הודעה</h3>
+    <form id="msgForm" onsubmit="sendMsg(event);return false;">
+      <input type="text" id="mn" placeholder="שם (אופציונלי)">
+      <input type="email" id="me" placeholder="דוא&quot;ל (אופציונלי)">
+      <textarea id="mt" required placeholder="ההודעה שלך…"></textarea>
+      <button class="msend" type="submit">שליחה</button>
+    </form>
+    <div class="msgdone" id="msgDone">&#10004; תודה! ההודעה נשלחה.</div>
+  </div>
+</div>
+<script>
+function openMsg(){document.getElementById('msgModal').style.display='flex';}
+function closeMsg(){document.getElementById('msgModal').style.display='none';}
+async function sendMsg(e){e.preventDefault();var f=document.getElementById('msgForm');var btn=f.querySelector('.msend');btn.textContent='...';var name=document.getElementById('mn').value.trim();var em=document.getElementById('me').value.trim();var msg=document.getElementById('mt').value.trim();if(!msg){btn.textContent='שליחה';alert('אנא הזינו הודעה.');return;}
+var txt='💬 SemiBid — '+new Date().toLocaleString()+String.fromCharCode(10)+'Name: '+name+String.fromCharCode(10)+'Email: '+em+String.fromCharCode(10)+'Message: '+msg;
+try{var r=await fetch('https://elrsrrvvuhfbkmxnvtod.supabase.co/rest/v1/messages',{method:'POST',headers:{apikey:'sb_publishable_XuZtEeFeJK6GtQC1RE3O6A_ZoVMcaO6',Authorization:'Bearer sb_publishable_XuZtEeFeJK6GtQC1RE3O6A_ZoVMcaO6','Content-Type':'application/json',Prefer:'return=minimal'},body:JSON.stringify({device_id:'web-help',text:txt})});if(!r.ok)throw new Error(r.status);f.style.display='none';document.getElementById('msgDone').style.display='block';}catch(err){btn.textContent='שליחה';alert('השליחה נכשלה. נסו שוב.');}}
+</script>
 <footer><div class="wrap">SemiBid · ספריית דפי נתונים | הזכויות שייכות ליצרנים; האתר מאנדקס קישורים פומביים בלבד.</div></footer>
 </body></html>

@@ -88,7 +88,17 @@ footer{border-top:1px solid var(--line);padding:34px 0;color:var(--mut);font-siz
 .doc .meta{display:flex;gap:9px;align-items:center;margin-top:5px;font-size:11.5px;color:var(--mut);flex-wrap:wrap}
 .doc .tag{background:#f1ece1;border-radius:999px;padding:2px 9px}.doc .dl{flex:0 0 auto;font-size:12.5px;font-weight:700;color:var(--accent)}
 .empty{color:var(--mut);padding:40px 0;text-align:center}
-@media(max-width:640px){.doc .dl{display:none}.nav a.l{display:none}select.lang{max-width:96px}}
+.hlp{font-size:13px;font-weight:600;padding:8px 15px;border-radius:999px;border:1.5px solid var(--line);background:#fff;cursor:pointer;color:var(--ink);font-family:inherit;white-space:nowrap}
+.hlp:hover{border-color:var(--accent);color:var(--accent)}
+.msgwrap{position:fixed;inset:0;background:rgba(20,16,12,.55);display:none;align-items:center;justify-content:center;z-index:100;padding:20px}
+.msgbox{background:#fffdfa;border-radius:18px;max-width:440px;width:100%;padding:26px;position:relative;box-shadow:0 30px 80px -40px rgba(0,0,0,.6)}
+.msgbox h3{font-size:19px;font-weight:800;margin-bottom:14px}
+.msgbox input,.msgbox textarea{width:100%;font:14px/1.5 inherit;padding:11px 14px;border:1.5px solid var(--line);border-radius:11px;margin-bottom:10px;outline:none;background:#fff;font-family:inherit}
+.msgbox textarea{min-height:110px;resize:vertical}
+.msgbox .msend{width:100%;background:var(--accent);color:#fff;font-weight:700;font-size:14.5px;padding:12px;border:0;border-radius:999px;cursor:pointer;font-family:inherit}
+.msgbox .mclose{position:absolute;top:12px;inset-inline-end:14px;background:none;border:0;font-size:22px;line-height:1;color:var(--mut);cursor:pointer}
+.msgdone{display:none;color:#1a7f37;font-weight:600;padding:10px 0}
+@media(max-width:640px){.doc .dl{display:none}.nav a.l{display:none}select.lang{max-width:96px}.hlp{display:none}}
 </style>
 </head>
 <body>
@@ -100,6 +110,7 @@ footer{border-top:1px solid var(--line);padding:34px 0;color:var(--mut);font-siz
   <select class="lang" onchange="if(this.value)location.href=this.value" aria-label="Language">
     <option value="en" selected>English</option><option value="zh">中文</option><option value="ar">العربية</option><option value="de">Deutsch</option><option value="es">Español</option><option value="fa">فارسی</option><option value="fr">Français</option><option value="he">עברית</option><option value="hi">हिन्दी</option><option value="id">Indonesia</option><option value="it">Italiano</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="nl">Nederlands</option><option value="pl">Polski</option><option value="pt">Português</option><option value="ru">Русский</option><option value="sv">Svenska</option><option value="th">ไทย</option><option value="tr">Türkçe</option><option value="ur">اردو</option><option value="vi">Tiếng Việt</option>
   </select>
+  <button class="hlp" onclick="openMsg()">Message</button>
   <a class="b" href="documents.html">Browse library</a>
 </div></header>
 
@@ -5230,88 +5241,6 @@ footer{border-top:1px solid var(--line);padding:34px 0;color:var(--mut);font-siz
       <div class="dl">Download ↓</div>
     </a>
 </div>
-
-<div class="vsec" id="v-Wafer">
-  <div class="vhead"><span>Wafer</span><span>· 13 docs</span> · <span>晶圆 / 硅片规格书</span></div>
-    <a class="doc" data-k="Datasheet" data-v="Wafer" data-n="单晶硅片 G12 产品规格书" href="datasheets/Wafer-晶圆/LONGi-单晶硅片-G12.pdf" target="_blank" rel="noopener">
-      <div class="ic">PDF</div>
-      <div class="mid"><div class="nm">LONGi-单晶硅片-G12</div>
-        <div class="meta"><span class="tag">隆基 LONGi</span><span>单晶硅片 G12 产品规格书</span><span>9.9 MB</span></div></div>
-      <div class="dl">Download ↓</div>
-    </a>
-    <a class="doc" data-k="Datasheet" data-v="Wafer" data-n="硅片 TDS 规格书 (NM10)" href="datasheets/Wafer-晶圆/Hoyuan-硅片规格书-CN-V4.pdf" target="_blank" rel="noopener">
-      <div class="ic">PDF</div>
-      <div class="mid"><div class="nm">Hoyuan-硅片规格书-CN-V4</div>
-        <div class="meta"><span class="tag">和元 Hoyuan</span><span>硅片 TDS 规格书 (NM10)</span><span>485 KB</span></div></div>
-      <div class="dl">Download ↓</div>
-    </a>
-    <a class="doc" data-k="Datasheet" data-v="Wafer" data-n="单晶N型硅片 M10L (182.2×183.75) 规格书" href="datasheets/Wafer-晶圆/Hoyuan-单晶N型硅片-M10L-182.2x183.75-CN-V2508.pdf" target="_blank" rel="noopener">
-      <div class="ic">PDF</div>
-      <div class="mid"><div class="nm">Hoyuan-单晶N型硅片-M10L-182.2x183.75-CN-V2508</div>
-        <div class="meta"><span class="tag">和元 Hoyuan</span><span>单晶N型硅片 M10L (182.2×183.75) 规格书</span><span>1.1 MB</span></div></div>
-      <div class="dl">Download ↓</div>
-    </a>
-    <a class="doc" data-k="Datasheet" data-v="Wafer" data-n="单晶N型硅片 G12 (210×210) 规格书" href="datasheets/Wafer-晶圆/HYsolar-单晶N型硅片-G12-210x210-CN-V2508.pdf" target="_blank" rel="noopener">
-      <div class="ic">PDF</div>
-      <div class="mid"><div class="nm">HYsolar-单晶N型硅片-G12-210x210-CN-V2508</div>
-        <div class="meta"><span class="tag">华耀 HYsolar</span><span>单晶N型硅片 G12 (210×210) 规格书</span><span>918 KB</span></div></div>
-      <div class="dl">Download ↓</div>
-    </a>
-    <a class="doc" data-k="Datasheet" data-v="Wafer" data-n="N型 G12-R 硅片 A级 规格书" href="datasheets/Wafer-晶圆/GokinSolar-N型-G12-R-A级.pdf" target="_blank" rel="noopener">
-      <div class="ic">PDF</div>
-      <div class="mid"><div class="nm">GokinSolar-N型-G12-R-A级</div>
-        <div class="meta"><span class="tag">高景 Gokin Solar</span><span>N型 G12-R 硅片 A级 规格书</span><span>880 KB</span></div></div>
-      <div class="dl">Download ↓</div>
-    </a>
-    <a class="doc" data-k="Datasheet" data-v="Wafer" data-n="N型 210半片 硅片 A级 规格书" href="datasheets/Wafer-晶圆/GokinSolar-N型-210半片-A级.pdf" target="_blank" rel="noopener">
-      <div class="ic">PDF</div>
-      <div class="mid"><div class="nm">GokinSolar-N型-210半片-A级</div>
-        <div class="meta"><span class="tag">高景 Gokin Solar</span><span>N型 210半片 硅片 A级 规格书</span><span>512 KB</span></div></div>
-      <div class="dl">Download ↓</div>
-    </a>
-    <a class="doc" data-k="Datasheet" data-v="Wafer" data-n="P型硅片规格书" href="datasheets/Wafer-晶圆/Solargiga-P型硅片规格书.pdf" target="_blank" rel="noopener">
-      <div class="ic">PDF</div>
-      <div class="mid"><div class="nm">Solargiga-P型硅片规格书</div>
-        <div class="meta"><span class="tag">阳光能源 Solargiga</span><span>P型硅片规格书</span><span>249 KB</span></div></div>
-      <div class="dl">Download ↓</div>
-    </a>
-    <a class="doc" data-k="Datasheet" data-v="Wafer" data-n="SA-182 N型单晶硅片规格书" href="datasheets/Wafer-晶圆/ENFSolar-SA182-2-N-Type-Mono-Wafer-Spec.pdf" target="_blank" rel="noopener">
-      <div class="ic">PDF</div>
-      <div class="mid"><div class="nm">ENFSolar-SA182-2-N-Type-Mono-Wafer-Spec</div>
-        <div class="meta"><span class="tag">ENF Solar</span><span>SA-182 N型单晶硅片规格书</span><span>250 KB</span></div></div>
-      <div class="dl">Download ↓</div>
-    </a>
-    <a class="doc" data-k="Datasheet" data-v="Wafer" data-n="Silicon Wafer Production & Specification" href="datasheets/Wafer-晶圆/microchemicals-SiliconWafer-Production-Spec.pdf" target="_blank" rel="noopener">
-      <div class="ic">PDF</div>
-      <div class="mid"><div class="nm">microchemicals-SiliconWafer-Production-Spec</div>
-        <div class="meta"><span class="tag">MicroChemicals</span><span>Silicon Wafer Production & Specification</span><span>3.3 MB</span></div></div>
-      <div class="dl">Download ↓</div>
-    </a>
-    <a class="doc" data-k="Datasheet" data-v="Wafer" data-n="200mm Silicon Wafer Spec 8PB0H1030A0" href="datasheets/Wafer-晶圆/Omedasemi-200mm-Silicon-Wafer-Spec-8PB0H1030A0.pdf" target="_blank" rel="noopener">
-      <div class="ic">PDF</div>
-      <div class="mid"><div class="nm">Omedasemi-200mm-Silicon-Wafer-Spec-8PB0H1030A0</div>
-        <div class="meta"><span class="tag">Omeda Semi</span><span>200mm Silicon Wafer Spec 8PB0H1030A0</span><span>361 KB</span></div></div>
-      <div class="dl">Download ↓</div>
-    </a>
-    <a class="doc" data-k="Datasheet" data-v="Wafer" data-n="Specification #428 DSP Silicon Wafers" href="datasheets/Wafer-晶圆/SiWafer-Spec428-DSP-Silicon-Wafers.pdf" target="_blank" rel="noopener">
-      <div class="ic">PDF</div>
-      <div class="mid"><div class="nm">SiWafer-Spec428-DSP-Silicon-Wafers</div>
-        <div class="meta"><span class="tag">SiWafer</span><span>Specification #428 DSP Silicon Wafers</span><span>29 KB</span></div></div>
-      <div class="dl">Download ↓</div>
-    </a>
-    <a class="doc" data-k="Datasheet" data-v="Wafer" data-n="硅片/衬底通用说明" href="datasheets/Wafer-晶圆/NanoAndMore-Silicon-Wafers-General-Description.pdf" target="_blank" rel="noopener">
-      <div class="ic">PDF</div>
-      <div class="mid"><div class="nm">NanoAndMore-Silicon-Wafers-General-Description</div>
-        <div class="meta"><span class="tag">NanoAndMore</span><span>硅片/衬底通用说明</span><span>354 KB</span></div></div>
-      <div class="dl">Download ↓</div>
-    </a>
-    <a class="doc" data-k="Datasheet" data-v="Wafer" data-n="8英寸 N型 4H-SiC 衬底标准" href="datasheets/Wafer-晶圆/SummitCrystal-8inch-N-4H-SiC-Substrate-Standard.pdf" target="_blank" rel="noopener">
-      <div class="ic">PDF</div>
-      <div class="mid"><div class="nm">SummitCrystal-8inch-N-4H-SiC-Substrate-Standard</div>
-        <div class="meta"><span class="tag">天科合达 SummitCrystal</span><span>8英寸 N型 4H-SiC 衬底标准</span><span>955 KB</span></div></div>
-      <div class="dl">Download ↓</div>
-    </a>
-</div>
 <div class="empty" id="empty" style="display:none">No matching documents. Try another keyword.</div>
 </div></div>
 </main>
@@ -5326,6 +5255,27 @@ q.addEventListener('input',apply);
 apply();
 document.querySelectorAll('.vf').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.vf').forEach(function(x){x.classList.remove('on')});b.classList.add('on');vf=b.dataset.v;apply();});});
 document.querySelectorAll('.kf').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.kf').forEach(function(x){x.classList.remove('on')});b.classList.add('on');kf=b.dataset.k;apply();});});
+</script>
+
+<div class="msgwrap" id="msgModal">
+  <div class="msgbox">
+    <button class="mclose" onclick="closeMsg()">&#10005;</button>
+    <h3>Leave a message</h3>
+    <form id="msgForm" onsubmit="sendMsg(event);return false;">
+      <input type="text" id="mn" placeholder="Name (optional)">
+      <input type="email" id="me" placeholder="Email (optional)">
+      <textarea id="mt" required placeholder="Your message…"></textarea>
+      <button class="msend" type="submit">Send</button>
+    </form>
+    <div class="msgdone" id="msgDone">&#10004; Thanks! Your message has been sent.</div>
+  </div>
+</div>
+<script>
+function openMsg(){document.getElementById('msgModal').style.display='flex';}
+function closeMsg(){document.getElementById('msgModal').style.display='none';}
+async function sendMsg(e){e.preventDefault();var f=document.getElementById('msgForm');var btn=f.querySelector('.msend');btn.textContent='...';var name=document.getElementById('mn').value.trim();var em=document.getElementById('me').value.trim();var msg=document.getElementById('mt').value.trim();if(!msg){btn.textContent='Send';alert('Please enter a message.');return;}
+var txt='💬 SemiBid — '+new Date().toLocaleString()+String.fromCharCode(10)+'Name: '+name+String.fromCharCode(10)+'Email: '+em+String.fromCharCode(10)+'Message: '+msg;
+try{var r=await fetch('https://elrsrrvvuhfbkmxnvtod.supabase.co/rest/v1/messages',{method:'POST',headers:{apikey:'sb_publishable_XuZtEeFeJK6GtQC1RE3O6A_ZoVMcaO6',Authorization:'Bearer sb_publishable_XuZtEeFeJK6GtQC1RE3O6A_ZoVMcaO6','Content-Type':'application/json',Prefer:'return=minimal'},body:JSON.stringify({device_id:'web-help',text:txt})});if(!r.ok)throw new Error(r.status);f.style.display='none';document.getElementById('msgDone').style.display='block';}catch(err){btn.textContent='Send';alert('Failed to send. Please try again.');}}
 </script>
 <footer><div class="wrap">SemiBid · Semiconductor Datasheet Library | All documents remain the property of their vendors; this site only indexes public download links for reference.</div></footer>
 </body></html>
