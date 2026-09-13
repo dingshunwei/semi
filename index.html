@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SemiBid · 国产半导体公开资料库</title>
+<meta name="description" content="收录国产芯片原厂公开的 datasheet 数据手册、选型手册、产品简报与技术白皮书，按厂商分类，一键下载。">
+<meta property="og:title" content="SemiBid · 国产半导体公开资料库">
+<meta property="og:description" content="收录国产芯片原厂公开的 datasheet 数据手册、选型手册、产品简报与技术白皮书，按厂商分类，一键下载。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://semi.bid/">
+<link rel="canonical" href="https://semi.bid/">
+<style>
+:root{--bg:#f7f4ee;--ink:#16161a;--mut:#7d7d88;--accent:#e4783b;--line:#e6dfd3;--card:#fffdfa}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}.wrap{max-width:1080px;margin:0 auto;padding:0 26px}
+header{position:sticky;top:0;z-index:30;background:rgba(247,244,238,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;height:70px;gap:22px}
+.logo{display:flex;align-items:baseline;gap:9px;font-weight:800}.logo b{font-size:21px;letter-spacing:-.01em}
+.logo i{font-style:normal;font-size:10px;letter-spacing:.26em;color:var(--accent);font-weight:700;text-transform:uppercase}
+.nav .sp{margin-left:auto}.nav a.l{font-size:14px;font-weight:600;color:var(--mut)}.nav a.l:hover{color:var(--ink)}
+.nav a.b{font-size:13.5px;font-weight:600;background:var(--ink);color:#fff;padding:9px 18px;border-radius:999px}.nav a.b:hover{background:var(--accent)}
+.hero{padding:64px 0 30px}.kick{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:10px}.kick::before{content:"";width:32px;height:2px;background:var(--accent)}
+h1{font-size:clamp(30px,4.6vw,50px);font-weight:800;line-height:1.12;margin-top:16px;letter-spacing:-.01em}
+.hero p{color:var(--mut);margin-top:14px;max-width:660px;font-size:15.5px}
+.stats{display:flex;gap:28px;margin-top:24px;flex-wrap:wrap;font-size:13.5px;color:var(--mut)}.stats b{color:var(--ink);font-weight:800;font-size:21px;margin-right:6px}
+.btn{display:inline-flex;align-items:center;gap:9px;margin-top:26px;background:var(--accent);color:#fff;font-weight:700;font-size:14.5px;padding:13px 26px;border-radius:999px;transition:.2s}.btn:hover{transform:translateY(-2px);box-shadow:0 16px 34px -18px var(--accent)}
+.sec{padding:34px 0}.sec h2{font-size:22px;font-weight:800;margin-bottom:6px}.sec .sub{color:var(--mut);font-size:14px;margin-bottom:22px}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:14px}
+.vcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 20px 18px;transition:.22s;display:flex;flex-direction:column}
+.vcard:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 24px 44px -34px rgba(60,40,20,.7)}
+.vcard .nm{font-weight:800;font-size:16px}.vcard .en{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);margin-top:3px}
+.vcard .ct{margin-top:14px;font-weight:800;font-size:26px;color:var(--accent)}.vcard .ct span{font-size:12px;color:var(--mut);font-weight:600;margin-left:3px}
+.vcard .lk{margin-top:auto;padding-top:16px;font-size:12.5px;font-weight:600;color:var(--mut)}.vcard:hover .lk{color:var(--accent)}
+.note{padding:24px 0 60px;color:var(--mut);font-size:12.5px;line-height:1.9}.note b{color:var(--ink)}
+footer{border-top:1px solid var(--line);padding:34px 0;color:var(--mut);font-size:12.5px;text-align:center}
+.bar{position:sticky;top:70px;z-index:20;background:rgba(247,244,238,.95);backdrop-filter:blur(12px);padding:14px 0;border-bottom:1px solid var(--line)}
+.tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.search{flex:1;min-width:200px;font-size:14px;padding:10px 16px;border:1.5px solid var(--line);border-radius:999px;background:#fff;outline:none}.search:focus{border-color:var(--accent)}
+.chip{font-size:12.5px;font-weight:600;padding:7px 14px;border-radius:999px;border:1.5px solid var(--line);background:#fff;cursor:pointer;transition:.2s}
+.chip.on,.chip:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.grid{padding:20px 0 70px}
+.vhead{font-weight:800;font-size:15px;margin:28px 0 12px;display:flex;align-items:center;gap:9px;flex-wrap:wrap}.vhead span{color:var(--mut);font-weight:500;font-size:12.5px}
+.vhead a{font-size:12px;color:var(--accent);font-weight:600}
+.doc{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 16px;margin-bottom:9px;transition:.2s}
+.doc:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 18px 36px -30px rgba(60,40,20,.6)}
+.doc .ic{flex:0 0 auto;width:44px;height:44px;border-radius:10px;background:linear-gradient(145deg,var(--accent),#f0a56f);color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.doc .mid{flex:1;min-width:0}.doc .nm{font-weight:700;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.doc .meta{display:flex;gap:9px;align-items:center;margin-top:5px;font-size:11.5px;color:var(--mut);flex-wrap:wrap}
+.doc .tag{background:#f1ece1;border-radius:999px;padding:2px 9px}.doc .dl{flex:0 0 auto;font-size:12.5px;font-weight:700;color:var(--accent)}
+.empty{color:var(--mut);padding:40px 0;text-align:center}
+@media(max-width:600px){.doc .dl{display:none}.nav a.l{display:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+  <a class="logo" href="index.html"><b>SemiBid</b><i>Datasheet Lib</i></a>
+  <span class="sp"></span>
+  <a class="l" href="index.html">首页</a>
+  <a class="l" href="documents.html">资料库</a>
+  <a class="b" href="documents.html">进入资料库</a>
+</div></header>
+
+<main>
+<section class="hero"><div class="wrap">
+  <span class="kick">Semiconductor Datasheets</span>
+  <h1>国产半导体<br>公开资料库</h1>
+  <p>汇集国产芯片原厂公开发布的 datasheet、选型手册、产品简报与技术白皮书。全部来自各厂商官网公开链接，按厂商分类、可检索、一键下载。</p>
+  <div class="stats"><div><b>5</b>家厂商</div><div><b>276</b>份资料</div><div><b>506.6 MB</b>总容量</div></div>
+  <a class="btn" href="documents.html">进入资料库 →</a>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <h2>按厂商浏览</h2>
+  <div class="sub">点击厂商卡片进入对应资料列表</div>
+  <div class="vgrid">
+  <a class="vcard" href="documents.html#v-兆易创新-GigaDevice">
+    <div class="nm">兆易创新</div><div class="en">GigaDevice</div>
+    <div class="ct">166<span>份</span></div>
+    <div class="lk">查看资料 →</div>
+  </a>
+  <a class="vcard" href="documents.html#v-圣邦微-SGMicro">
+    <div class="nm">圣邦微</div><div class="en">SGMicro</div>
+    <div class="ct">8<span>份</span></div>
+    <div class="lk">查看资料 →</div>
+  </a>
+  <a class="vcard" href="documents.html#v-思瑞浦-3PEAK">
+    <div class="nm">思瑞浦</div><div class="en">3PEAK</div>
+    <div class="ct">31<span>份</span></div>
+    <div class="lk">查看资料 →</div>
+  </a>
+  <a class="vcard" href="documents.html#v-澜起-Montage">
+    <div class="nm">澜起科技</div><div class="en">Montage</div>
+    <div class="ct">68<span>份</span></div>
+    <div class="lk">查看资料 →</div>
+  </a>
+  <a class="vcard" href="documents.html#v-艾为-Awinic">
+    <div class="nm">艾为电子</div><div class="en">Awinic</div>
+    <div class="ct">3<span>份</span></div>
+    <div class="lk">查看资料 →</div>
+  </a>
+  </div>
+</div></section>
+
+<section class="note"><div class="wrap">
+  <b>关于本站</b><br>
+  · 全部资料均为原厂官网公开发布，本站仅做整理与镜像，便于工程师检索与下载；<br>
+  · 资料版权归各集成电路设计企业所有，仅供学习与选型参考，请以原厂最新版本为准；<br>
+  · 持续收录中，欢迎补充。联系：<a href="mailto:hi@semi.bid" style="color:var(--accent)">hi@semi.bid</a>
+</div></section>
+</main>
+<footer><div class="wrap">SemiBid · 半导体公开资料库 &nbsp;|&nbsp; 资料版权归各原厂所有，本站仅收录公开下载链接供学习参考</div></footer>
+</body></html>
